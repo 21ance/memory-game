@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: $header-height calc(100vh - $header-height - $footer-height) $footer-height;
+}
