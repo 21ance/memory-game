@@ -1,0 +1,27 @@
+main {
+  overflow: auto;
+
+  .score-board{ 
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    img {
+      width: 250px;
+    }
+  }
+}

@@ -7,11 +7,11 @@ header {
   background-color: $header-color;
   box-shadow: 0 0 15px 1px rgb(0 0 0 / 50%);
   position: relative;
-  font-family: pokeSolid;
 
   &> span {
-    font-size: 2.5rem;
+    font-size: 5rem;
     font-weight: bold;
     color: $header-font-color;
+    font-family: pokeSolid;
   }
 }
