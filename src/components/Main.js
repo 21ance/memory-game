@@ -28,9 +28,9 @@ const Main = () => {
 
   function fetchPokemons() {
     for (let i = 0; i < pokeQuantity; i++) {
-      const randomNumber = Math.floor(Math.random() * pokeID.length) + 1;
-      setPokeID(...pokeID, pokeID.splice(randomNumber, 1));
-      fetchPokemonAPI(randomNumber);
+      const randomIndex = Math.floor(Math.random() * pokeID.length) + 1;
+      setPokeID(...pokeID, pokeID.splice(randomIndex, 1));
+      fetchPokemonAPI(pokeID[randomIndex]);
     }
   }
 
@@ -40,7 +40,6 @@ const Main = () => {
 
   return (
     <main>
-      {console.log(list)}
       {isLoading ? (
         <Loading />
       ) : (
