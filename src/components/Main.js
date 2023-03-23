@@ -7,9 +7,9 @@ const Main = () => {
   const [pokeQuantity, setPokeQuantity] = useState(6);
   const [pokeID, setPokeID] = useState([...Array(150).keys()]);
   const [score, setScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
   const [bestScore, setBestScore] = useState(0);
   const [isLoading, setisLoading] = useState(false);
-  let temp = [];
 
   async function fetchPokemonAPI(id) {
     try {
@@ -20,7 +20,7 @@ const Main = () => {
         name: pokeResponse.name,
         image: pokeResponse.sprites.front_default,
       };
-      setList([...list, pokeObject]);
+      setList((prev) => [...prev, pokeObject]);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +36,7 @@ const Main = () => {
 
   useEffect(() => {
     fetchPokemons();
-  }, []);
+  }, [pokeQuantity]);
 
   return (
     <main>
@@ -57,6 +57,14 @@ const Main = () => {
                   name={character.name}
                   image={character.image}
                   key={character.id}
+                  clickedCards={clickedCards}
+                  setClickedCards={setClickedCards}
+                  score={score}
+                  setScore={setScore}
+                  bestScore={bestScore}
+                  setBestScore={setBestScore}
+                  list={list}
+                  setList={setList}
                 />
               );
             })}
