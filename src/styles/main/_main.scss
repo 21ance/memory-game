@@ -1,6 +1,6 @@
 main {
   overflow: auto;
-
+    
   .score-board{ 
     display: grid;
     grid-template-columns: auto auto;
@@ -31,5 +31,48 @@ main {
     img {
       width: 250px;
     }
+  }
+
+  .start-page {
+    height: 100%;
+    background-color: $card-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 4px;
+    font-size: 1.4rem;
+
+    p {
+      font-size: 0.7rem;
+      font-style: italic;
+    }
+
+    .start-buttons {
+      display: flex;
+      gap: 5px;
+    }
+
+    select {
+      padding: 5px 0px;
+    }
+
+    button {
+      padding: 5px 10px;
+      background-color: $header-color;
+      color: $white-font;
+      border: 0;
+      border-radius: 4px;
+    }
+
+    button:hover, select:hover {
+      scale: 1.05;
+      transition: $transition-time;    
+    }
+  }
+
+  button, select {
+    cursor: pointer;
   }
 }

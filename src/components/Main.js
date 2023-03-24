@@ -1,5 +1,7 @@
 import Card from "./body/Card";
 import Loading from "./body/Loading";
+import Scoreboard from "./body/Scoreboard";
+import StartPage from "./body/StartPage";
 import { useEffect, useState } from "react";
 
 const Main = () => {
@@ -9,7 +11,25 @@ const Main = () => {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isStartPage, setIsStartPage] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (!isStartPage) {
+      fetchPokemons();
+    }
+    // eslint-disable-next-line
+  }, [pokeQuantity, isStartPage]);
+
+  useEffect(() => {
+    if (clickedCards.length === pokeQuantity) {
+      setClickedCards([]);
+      setList([]);
+      setPokeQuantity((prev) => prev + 1);
+    }
+    if (score > bestScore) setBestScore(score);
+  }, [clickedCards, score, bestScore, pokeQuantity]);
 
   async function fetchPokemonAPI(id) {
     try {
@@ -37,20 +57,6 @@ const Main = () => {
     }
   }
 
-  useEffect(() => {
-    setIsLoading(true);
-    fetchPokemons();
-  }, [pokeQuantity]);
-
-  useEffect(() => {
-    if (clickedCards.length === pokeQuantity) {
-      setClickedCards([]);
-      setList([]);
-      setPokeQuantity((prev) => prev + 1);
-    }
-    if (score > bestScore) setBestScore(score);
-  }, [clickedCards, score, bestScore, pokeQuantity]);
-
   function handleCardClick(name) {
     setList(list.sort((a, b) => 0.5 - Math.random()));
     setClickedCards([...clickedCards, name]);
@@ -69,18 +75,28 @@ const Main = () => {
     setPokeID([...Array(151).keys()]);
   }
 
+  function handleGameStart() {
+    console.log("game start");
+    setIsStartPage(false);
+  }
+
   return (
     <main>
-      {isLoading ? (
-        <Loading />
-      ) : (
+      {isStartPage && (
+        <StartPage
+          handleGameStart={handleGameStart}
+          level={pokeQuantity}
+          setLevel={setPokeQuantity}
+        />
+      )}
+      {isLoading && !isStartPage && <Loading />}
+      {!isLoading && !isStartPage && (
         <>
-          <div className="score-board">
-            <span>Score: {score}</span>
-            <span>Best Score: {bestScore}</span>
-            <h1>Level: {pokeQuantity}</h1>
-          </div>
-
+          <Scoreboard
+            score={score}
+            bestScore={bestScore}
+            level={pokeQuantity}
+          />
           <div className="card-container">
             {list.map((character) => {
               return (
