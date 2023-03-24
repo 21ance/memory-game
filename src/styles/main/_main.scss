@@ -15,10 +15,11 @@ main {
   }
 
   .card-container {
+    margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 250px);
     justify-content: center;
-    gap: 10px;
+    gap: 50px;
   }
 
   .loading{

@@ -21,7 +21,9 @@ const Main = () => {
         image: pokeResponse.sprites.front_default,
       };
       setList((prev) => [...prev, pokeObject]);
-      setIsLoading(false);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 500);
     } catch (error) {
       console.log(error);
     }
@@ -37,10 +39,7 @@ const Main = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    // add timeout to simulate loading
-    setTimeout(() => {
-      fetchPokemons();
-    }, 300);
+    fetchPokemons();
   }, [pokeQuantity]);
 
   useEffect(() => {

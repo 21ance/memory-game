@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header>
-      <span>Pokemon</span>
+      <span>MemGame</span>
     </header>
   );
 };

@@ -15,3 +15,10 @@
     text-transform: capitalize;
   }
 }
+
+.card:hover {
+  scale: 1.05;
+  transition: $transition-time;
+  background-color: $header-color;
+  color: $white-font;
+}
