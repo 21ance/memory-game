@@ -8,8 +8,19 @@ const Main = () => {
   const [list, setList] = useState([]);
   const [pokeQuantity, setPokeQuantity] = useState(1);
   const [pokeID, setPokeID] = useState([...Array(151).keys()]);
-  const [score, setScore] = useState(0);
-  const [bestScore, setBestScore] = useState(0);
+  const [streak, setStreak] = useState(0);
+  const [bestStreak, setBestStreak] = useState(() => {
+    if (JSON.parse(localStorage.getItem("bestStreak")) !== null) {
+      return JSON.parse(localStorage.getItem("bestStreak"));
+    }
+    return 0;
+  });
+  const [bestLevel, setBestLevel] = useState(() => {
+    if (JSON.parse(localStorage.getItem("bestLevel")) !== null) {
+      return JSON.parse(localStorage.getItem("bestLevel"));
+    }
+    return 1;
+  });
   const [clickedCards, setClickedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isStartPage, setIsStartPage] = useState(true);
@@ -27,9 +38,14 @@ const Main = () => {
       setClickedCards([]);
       setList([]);
       setPokeQuantity((prev) => prev + 1);
+      setBestLevel(pokeQuantity);
+      localStorage.setItem("bestLevel", JSON.stringify(pokeQuantity));
     }
-    if (score > bestScore) setBestScore(score);
-  }, [clickedCards, score, bestScore, pokeQuantity]);
+    if (streak > bestStreak) {
+      setBestStreak(streak);
+      localStorage.setItem("bestStreak", JSON.stringify(streak));
+    }
+  }, [clickedCards, streak, bestStreak, pokeQuantity]);
 
   async function fetchPokemonAPI(id) {
     try {
@@ -60,7 +76,7 @@ const Main = () => {
   function handleCardClick(name) {
     setList(list.sort((a, b) => 0.5 - Math.random()));
     setClickedCards([...clickedCards, name]);
-    setScore(score + 1);
+    setStreak(streak + 1);
 
     if (clickedCards.includes(name)) {
       gameOver();
@@ -68,7 +84,7 @@ const Main = () => {
   }
 
   function gameOver() {
-    setScore(0);
+    setStreak(0);
     setClickedCards([]);
     setPokeQuantity(1);
     setList([]);
@@ -87,14 +103,16 @@ const Main = () => {
           handleGameStart={handleGameStart}
           level={pokeQuantity}
           setLevel={setPokeQuantity}
+          bestStreak={bestStreak}
+          bestLevel={bestLevel}
         />
       )}
       {isLoading && !isStartPage && <Loading />}
       {!isLoading && !isStartPage && (
         <>
           <Scoreboard
-            score={score}
-            bestScore={bestScore}
+            streak={streak}
+            bestStreak={bestStreak}
             level={pokeQuantity}
           />
           <div className="card-container">

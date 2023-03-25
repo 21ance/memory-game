@@ -1,10 +1,10 @@
 const Scoreboard = (props) => {
-  const { score, bestScore, level } = props;
+  const { streak, bestStreak, level } = props;
 
   return (
     <div className="score-board">
-      <span>Score: {score}</span>
-      <span>Best Score: {bestScore}</span>
+      <span>Streak: {streak}</span>
+      <span>Best Streak: {bestStreak}</span>
       <h1>Level: {level}</h1>
     </div>
   );
