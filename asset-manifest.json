@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/memory-game/static/css/main.9a1339a3.css",
-    "main.js": "/memory-game/static/js/main.10d9d7cc.js",
+    "main.js": "/memory-game/static/js/main.be15e69e.js",
     "static/media/pokemon_hollow.ttf": "/memory-game/static/media/pokemon_hollow.47f77ce9939c5330492b.ttf",
     "static/media/pokemon_solid.ttf": "/memory-game/static/media/pokemon_solid.5d60be1f7ff5fcc21fc1.ttf",
     "index.html": "/memory-game/index.html",
     "main.9a1339a3.css.map": "/memory-game/static/css/main.9a1339a3.css.map",
-    "main.10d9d7cc.js.map": "/memory-game/static/js/main.10d9d7cc.js.map"
+    "main.be15e69e.js.map": "/memory-game/static/js/main.be15e69e.js.map"
   },
   "entrypoints": [
     "static/css/main.9a1339a3.css",
-    "static/js/main.10d9d7cc.js"
+    "static/js/main.be15e69e.js"
   ]
 }
