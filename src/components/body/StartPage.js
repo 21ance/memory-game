@@ -1,12 +1,12 @@
 const StartPage = (props) => {
   const { handleGameStart, level, setLevel, bestStreak, bestLevel } = props;
-  const levels = [...Array(20).keys()];
+  const levels = [...Array(10).keys()];
 
   return (
     <div className="start-page">
       <span>Welcome to Pokémon MemGame :D</span>
       <span>To progress, do not click the same Pokémon twice.</span>
-      <span>Complete level 20 to win! Goodluck!</span>
+      <span>Complete level 10 to win! Goodluck!</span>
       <div className="start-buttons">
         <select
           name="levels"
@@ -26,8 +26,8 @@ const StartPage = (props) => {
       </div>
       {bestStreak !== 0 ? (
         <>
-          <p>Your best is level: {bestLevel}</p>
-          <p>Your longest streak is: {bestStreak}</p>
+          <p>Your best level: {bestLevel}</p>
+          <p>Your longest streak: {bestStreak}</p>
         </>
       ) : (
         <p>Your best level and longest streak will be recorded here</p>

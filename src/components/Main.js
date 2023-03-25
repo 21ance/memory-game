@@ -2,6 +2,7 @@ import Card from "./body/Card";
 import Loading from "./body/Loading";
 import Scoreboard from "./body/Scoreboard";
 import StartPage from "./body/StartPage";
+import Winner from "./body/Winner";
 import { useEffect, useState } from "react";
 
 const Main = () => {
@@ -24,26 +25,35 @@ const Main = () => {
   const [clickedCards, setClickedCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isStartPage, setIsStartPage] = useState(true);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     if (!isStartPage) {
+      setIsLoading(true);
       fetchPokemons();
     }
     // eslint-disable-next-line
   }, [pokeQuantity, isStartPage]);
 
   useEffect(() => {
+    if (pokeQuantity === 11) {
+      gameOver();
+      setIsGameOver(true);
+    }
+
     if (clickedCards.length === pokeQuantity) {
       setClickedCards([]);
       setList([]);
       setPokeQuantity((prev) => prev + 1);
-      setBestLevel(pokeQuantity);
-      localStorage.setItem("bestLevel", JSON.stringify(pokeQuantity));
     }
     if (streak > bestStreak) {
       setBestStreak(streak);
       localStorage.setItem("bestStreak", JSON.stringify(streak));
+    }
+
+    if (clickedCards.length > bestLevel) {
+      setBestLevel(pokeQuantity);
+      localStorage.setItem("bestLevel", JSON.stringify(pokeQuantity));
     }
   }, [clickedCards, streak, bestStreak, pokeQuantity]);
 
@@ -80,6 +90,11 @@ const Main = () => {
 
     if (clickedCards.includes(name)) {
       gameOver();
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsStartPage(true);
+      }, 500);
     }
   }
 
@@ -92,13 +107,14 @@ const Main = () => {
   }
 
   function handleGameStart() {
-    console.log("game start");
     setIsStartPage(false);
   }
 
   return (
     <main>
-      {isStartPage && (
+      {isGameOver && <Winner />}
+      {isLoading && <Loading />}
+      {isStartPage && !isLoading && !isGameOver && (
         <StartPage
           handleGameStart={handleGameStart}
           level={pokeQuantity}
@@ -107,7 +123,6 @@ const Main = () => {
           bestLevel={bestLevel}
         />
       )}
-      {isLoading && !isStartPage && <Loading />}
       {!isLoading && !isStartPage && (
         <>
           <Scoreboard

@@ -1,0 +1,57 @@
+@media only screen and (max-width: 500px) {
+  .App {
+    display: grid;
+    grid-template-rows: $mobile-header-height calc(100vh - $mobile-header-height - $footer-height) $footer-height;
+  }
+
+  header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $mobile-header-height;
+    background-color: $header-color;
+    box-shadow: 0 0 15px 1px rgb(0 0 0 / 50%);
+  
+    &> span {
+      font-size: 3rem;
+      font-weight: lighter;
+    }
+  }
+
+  main {
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, 150px);
+      justify-content: center;
+      gap: 30px;
+      padding-bottom: 20px;
+
+      .card {
+        padding: 10px;
+      
+        img {
+          width: 100px;
+        }
+      }
+    }
+
+    .start-page {
+      font-size: 1.3rem;
+      align-items: start;
+    }
+
+    .winner-display {
+      justify-content: start;
+      padding-top: 20px;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      img {
+        width: 95%;
+      }
+    }
+  }
+}

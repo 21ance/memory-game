@@ -1,5 +1,32 @@
 main {
   overflow: auto;
+
+  .card {
+    background-color: $card-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 1px rgb(0 0 0 / 30%);
+  
+    img {
+      width: 150px;
+    }
+  
+    p {
+      text-transform: capitalize;
+    }
+  }
+  
+  .card:hover {
+    scale: 1.05;
+    transition: $transition-time;
+    background-color: $header-color;
+    color: $white-font;
+    cursor: pointer;
+  }
     
   .score-board{ 
     display: grid;
@@ -41,7 +68,6 @@ main {
     align-items: center;
     gap: 10px;
     padding: 20px;
-    border-radius: 4px;
     font-size: 1.4rem;
 
     p {
@@ -70,6 +96,15 @@ main {
       scale: 1.05;
       transition: $transition-time;    
     }
+  }
+
+  .winner-display {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 
   button, select {

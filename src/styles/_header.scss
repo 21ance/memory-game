@@ -6,7 +6,6 @@ header {
   height: $header-height;
   background-color: $header-color;
   box-shadow: 0 0 15px 1px rgb(0 0 0 / 50%);
-  position: relative;
 
   &> span {
     font-size: 5rem;
