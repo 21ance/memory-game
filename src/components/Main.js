@@ -55,7 +55,7 @@ const Main = () => {
       setBestLevel(pokeQuantity);
       localStorage.setItem("bestLevel", JSON.stringify(pokeQuantity));
     }
-  }, [clickedCards, streak, bestStreak, pokeQuantity]);
+  }, [clickedCards, streak, bestStreak, pokeQuantity, bestLevel]);
 
   async function fetchPokemonAPI(id) {
     try {
