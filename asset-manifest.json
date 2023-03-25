@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.5e3880ad.css",
+    "main.js": "/react-gh-pages/static/js/main.10d9d7cc.js",
+    "static/media/pokemon_hollow.ttf": "/react-gh-pages/static/media/pokemon_hollow.47f77ce9939c5330492b.ttf",
+    "static/media/pokemon_solid.ttf": "/react-gh-pages/static/media/pokemon_solid.5d60be1f7ff5fcc21fc1.ttf",
+    "index.html": "/react-gh-pages/index.html",
+    "main.5e3880ad.css.map": "/react-gh-pages/static/css/main.5e3880ad.css.map",
+    "main.10d9d7cc.js.map": "/react-gh-pages/static/js/main.10d9d7cc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e3880ad.css",
+    "static/js/main.10d9d7cc.js"
+  ]
+}
